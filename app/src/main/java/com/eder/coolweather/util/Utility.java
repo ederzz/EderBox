@@ -1,6 +1,7 @@
 package com.eder.coolweather.util;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.eder.coolweather.db.City;
 import com.eder.coolweather.db.Country;

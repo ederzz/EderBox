@@ -2,6 +2,7 @@ package com.eder.coolweather;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,9 +76,10 @@ public class ChooseAreaFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (currentLevel == LEVEL_PROVINCE) {
                     selectedProvince = provinceList.get(position);
-
+                    queryCities();
                 } else if (currentLevel == LEVEL_CITY) {
                     selectedCity = cityList.get(position);
+                    queryCountries();
                 }
             }
         });
@@ -86,11 +88,10 @@ public class ChooseAreaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (currentLevel == LEVEL_COUNTRY) {
-
+                    queryCities();
                 } else if (currentLevel == LEVEL_CITY) {
-
+                    queryProvinces();
                 }
-
             }
         });
 
@@ -167,6 +168,7 @@ public class ChooseAreaFragment extends Fragment {
         HttpUtil.sendOkHttpRequest(addr, new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                e.printStackTrace();
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

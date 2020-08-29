@@ -1,6 +1,7 @@
 package com.eder.coolweather;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -40,6 +41,9 @@ public class ChooseAreaFragment extends Fragment {
     public static final int LEVEL_PROVINCE = 0;
     public static final int LEVEL_CITY = 1;
     public static final int LEVEL_COUNTRY = 2;
+    public final String DATA_LEVEL_PRO = "province";
+    public final String DATA_LEVEL_CITY = "city";
+    public final String DATA_LEVEL_COUNTRY = "country";
 
     private ProgressDialog progressDialog;
     private TextView titleText;
@@ -80,6 +84,12 @@ public class ChooseAreaFragment extends Fragment {
                 } else if (currentLevel == LEVEL_CITY) {
                     selectedCity = cityList.get(position);
                     queryCountries();
+                } else if (currentLevel == LEVEL_COUNTRY) {
+                    String weatherId = countryList.get(position).getWeatherId();
+                    Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                    intent.putExtra("weather_id", weatherId);
+                    startActivity(intent);
+//                    getActivity().finish();
                 }
             }
         });
@@ -115,8 +125,7 @@ public class ChooseAreaFragment extends Fragment {
             currentLevel = LEVEL_PROVINCE;
         } else {
             String addr = "http://guolin.tech/api/china";
-            queryFromServer(addr, "province");
-            // TODO:设置常量变量
+            queryFromServer(addr, DATA_LEVEL_PRO);
         }
     }
 
@@ -136,7 +145,7 @@ public class ChooseAreaFragment extends Fragment {
         } else {
             int provinceCode = selectedProvince.getProvinceCode();
             String addr = "http://guolin.tech/api/china/" + provinceCode;
-            queryFromServer(addr, "city");
+            queryFromServer(addr, DATA_LEVEL_CITY);
         }
     }
 
@@ -158,7 +167,7 @@ public class ChooseAreaFragment extends Fragment {
             int provinceCode = selectedProvince.getProvinceCode();
             int cityCode = selectedCity.getCityCode();
             String addr = "http://guolin.tech/api/china/" + provinceCode + "/" + cityCode;
-            queryFromServer(addr, "country");
+            queryFromServer(addr, DATA_LEVEL_COUNTRY);
         }
 
     }

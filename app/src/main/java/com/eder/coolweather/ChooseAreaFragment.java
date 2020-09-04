@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment;
 import com.eder.coolweather.db.City;
 import com.eder.coolweather.db.Country;
 import com.eder.coolweather.db.Province;
+import com.eder.coolweather.gson.Weather;
 import com.eder.coolweather.util.HttpUtil;
 import com.eder.coolweather.util.Utility;
 
@@ -86,10 +87,17 @@ public class ChooseAreaFragment extends Fragment {
                     queryCountries();
                 } else if (currentLevel == LEVEL_COUNTRY) {
                     String weatherId = countryList.get(position).getWeatherId();
-                    Intent intent = new Intent(getActivity(), WeatherActivity.class);
-                    intent.putExtra("weather_id", weatherId);
-                    startActivity(intent);
-//                    getActivity().finish();
+                    if (getActivity() instanceof MainActivity) {
+                        Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                        intent.putExtra("weather_id", weatherId);
+                        startActivity(intent);
+                        getActivity().finish();
+                    } else if (getActivity() instanceof WeatherActivity) {
+                        WeatherActivity activity = (WeatherActivity) getActivity();
+                        activity.drawerLayout.closeDrawers();
+                        activity.refreshLayout.setRefreshing(true);
+                        activity.requestWeather(weatherId);
+                    }
                 }
             }
         });

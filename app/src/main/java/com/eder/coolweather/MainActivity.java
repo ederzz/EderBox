@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
             // TODO: 取消固定城市数据
+            // TODO: 天气信息添加进度条
         }
     }
 }

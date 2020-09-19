@@ -3,7 +3,6 @@ package com.eder.coolweather;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,14 +20,11 @@ import androidx.fragment.app.Fragment;
 import com.eder.coolweather.db.City;
 import com.eder.coolweather.db.Country;
 import com.eder.coolweather.db.Province;
-import com.eder.coolweather.gson.Weather;
 import com.eder.coolweather.util.HttpUtil;
 import com.eder.coolweather.util.Utility;
 
 import org.jetbrains.annotations.NotNull;
 import org.litepal.LitePal;
-import org.litepal.crud.LitePalSupport;
-import org.litepal.tablemanager.callback.DatabaseListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -87,7 +83,7 @@ public class ChooseAreaFragment extends Fragment {
                     queryCountries();
                 } else if (currentLevel == LEVEL_COUNTRY) {
                     String weatherId = countryList.get(position).getWeatherId();
-                    if (getActivity() instanceof MainActivity) {
+                    if (getActivity() instanceof ChooseWeather) {
                         Intent intent = new Intent(getActivity(), WeatherActivity.class);
                         intent.putExtra("weather_id", weatherId);
                         startActivity(intent);

@@ -14,19 +14,24 @@
         android:supportsRtl="true"
         android:theme="@style/EderTheme"
         android:usesCleartextTraffic="true">
-        <service
-            android:name=".service.AutoUpdateService"
-            android:enabled="true"
-            android:exported="true"></service>
-
-        <activity android:name=".WeatherActivity" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main2"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".WeatherActivity" />
+        <activity android:name=".ChooseWeather">
+        </activity>
+
+        <service
+            android:name=".service.AutoUpdateService"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <fragment
-        android:id="@+id/choose_area_fragment"
-        android:name="com.eder.coolweather.ChooseAreaFragment"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.eder.coolweather.MainActivity">
+    <FrameLayout
+        android:id="@+id/home_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         />
-</FrameLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tablayout"
+        style="@style/MyTabLayoutStyle"
+        app:tabSelectedTextColor="#8E6AC1"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+    </com.google.android.material.tabs.TabLayout>
+</LinearLayout>
+
+

@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
              }
          });
-         switchFragment(0);
+         switchFragment(1);
     }
 
     private void switchFragment(int position) {

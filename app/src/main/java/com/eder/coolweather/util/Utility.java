@@ -6,12 +6,16 @@ import android.util.Log;
 import com.eder.coolweather.db.City;
 import com.eder.coolweather.db.Country;
 import com.eder.coolweather.db.Province;
+import com.eder.coolweather.gson.SspaiNews;
 import com.eder.coolweather.gson.Weather;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Utility {
     public static boolean handleProvinceResponse(String response) {
@@ -80,6 +84,22 @@ public class Utility {
             JSONArray jsonArray = jsonObject.getJSONArray("HeWeather");
             String weatherContent = jsonArray.getJSONObject(0).toString();
             return new Gson().fromJson(weatherContent, Weather.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static List<SspaiNews> handleSspaiNewsResp(String resp) {
+        try {
+            JSONObject jsonObject = new JSONObject(resp);
+            JSONArray jsonArray = jsonObject.getJSONArray("data");
+            List<SspaiNews> news = new ArrayList<>();
+            for (int i = 0; i < jsonArray.length(); i++) {
+                String dataText = jsonArray.getJSONObject(i).toString();
+                news.add(new Gson().fromJson(dataText, SspaiNews.class));
+            }
+            return news;
         } catch (Exception e) {
             e.printStackTrace();
         }

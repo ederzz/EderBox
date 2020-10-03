@@ -2,9 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="#f4f4f4"
     android:orientation="horizontal">
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/sspai_news_list"
+        android:id="@+id/sspai_hotlist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />

@@ -2,6 +2,8 @@
 <LinearLayout android:layout_width="match_parent"
     android:orientation="horizontal"
     android:layout_height="100dp"
+    android:layout_marginBottom="10dp"
+    android:background="#fff"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView
         android:id="@+id/news_banner"
@@ -24,5 +26,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:id="@+id/news_date"
+                android:layout_width="0pt"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                />
+            <TextView
+                android:id="@+id/news_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5pt"
+                />
+            <TextView
+                android:id="@+id/news_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -8,6 +8,9 @@ public class SspaiNews {
     public String nickname;
     public String summary;
 
+    @SerializedName(("created_time"))
+    public int createdAt;
+
     @SerializedName("comment_count")
     public String commentCount;
 

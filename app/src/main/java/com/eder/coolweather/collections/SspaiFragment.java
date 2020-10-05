@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.eder.coolweather.R;
-import com.eder.coolweather.adapter.SspaiNewsAdapter;
 import com.eder.coolweather.gson.SspaiNews;
 import com.eder.coolweather.util.HttpUtil;
 import com.eder.coolweather.util.Utility;

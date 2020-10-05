@@ -16,8 +16,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main2"
-            >
+            android:label="@string/title_activity_main2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,8 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".WeatherActivity" />
-        <activity android:name=".ChooseWeather">
-        </activity>
+        <activity android:name=".ChooseWeather" />
+        <activity android:name=".collections.SspaiPostActivity" />
 
         <service
             android:name=".service.AutoUpdateService"

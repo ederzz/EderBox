@@ -42,4 +42,6 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     implementation "androidx.drawerlayout:drawerlayout:1.1.1"
     implementation 'org.jsoup:jsoup:1.13.1'
+    implementation "io.noties.markwon:core:4.6.0"
+    implementation "io.noties.markwon:html:4.6.0"
 }

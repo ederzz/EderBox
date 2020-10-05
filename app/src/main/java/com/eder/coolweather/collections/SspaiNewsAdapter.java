@@ -1,6 +1,7 @@
-package com.eder.coolweather.adapter;
+package com.eder.coolweather.collections;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,10 +29,12 @@ public class SspaiNewsAdapter extends RecyclerView.Adapter<SspaiNewsAdapter.View
         private TextView date;
         private TextView comment;
         private TextView like;
+        private View listItem;
 
         public ViewHolder(View view) {
             super(view);
 
+            listItem = view;
             banner = view.findViewById(R.id.news_banner);
             title = view.findViewById(R.id.news_title);
             summary = view.findViewById(R.id.news_summary);
@@ -55,13 +58,24 @@ public class SspaiNewsAdapter extends RecyclerView.Adapter<SspaiNewsAdapter.View
     }
 
     public void onBindViewHolder(ViewHolder holder, int idx) {
-        SspaiNews item = news.get(idx);
+        final SspaiNews item = news.get(idx);
         holder.title.setText(item.title);
         holder.summary.setText(item.summary);
-        holder.date.setText(CommonUtil.timeFormat(item.createdAt));
+
+        long ms = (long) item.createdAt * 1000;
+        holder.date.setText(CommonUtil.timeFormat(ms));
         holder.comment.setText(item.commentCount);
         holder.like.setText(item.likeCount);
         Glide.with(mContext).load(bannerWrapper(item.banner)).into(holder.banner);
+
+        holder.listItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, SspaiPostActivity.class);
+                intent.putExtra("post_id", item.id);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     public String bannerWrapper(String banner) {

@@ -7,6 +7,7 @@ public class SspaiNews {
     public String title;
     public String nickname;
     public String summary;
+    public int id;
 
     @SerializedName(("created_time"))
     public int createdAt;
